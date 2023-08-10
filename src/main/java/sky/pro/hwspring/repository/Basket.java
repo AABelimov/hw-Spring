@@ -18,18 +18,24 @@ public class Basket {
         this.marketRepositoryService = marketRepositoryService;
     }
 
-    public String add(int id) {
-        if (id < Item.getNextId()) {
-            Item item = marketRepositoryService.getItem(id);
-            if (basket.containsKey(item)) {
-                int count = basket.get(item) + 1;
-                basket.put(item, count);
-            } else {
-                basket.put(item, 1);
+    public String add(int[] id) {
+        int legal = 0;
+        int illegal = 0;
+        for (int i : id) {
+            if (i < Item.getNextId()) {
+                Item item = marketRepositoryService.getItem(i);
+                if (basket.containsKey(item)) {
+                    int count = basket.get(item) + 1;
+                    basket.put(item, count);
+                } else {
+                    basket.put(item, 1);
+                }
+                legal++;
+            }else {
+                illegal++;
             }
-            return String.format("%s has been added", item.getName());
         }
-        return "Illegal Id";
+        return String.format("%d added, %d illegal id", legal, illegal);
     }
 
     public Map<Item, Integer> get() {

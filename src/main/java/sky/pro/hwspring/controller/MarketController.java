@@ -19,7 +19,7 @@ public class MarketController {
     }
 
     @GetMapping("/add")
-    public String add(@RequestParam int id) {
+    public String add(@RequestParam int... id) {
         return marketService.add(id);
     }
 
