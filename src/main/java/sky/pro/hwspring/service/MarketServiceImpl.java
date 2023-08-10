@@ -15,7 +15,7 @@ public class MarketServiceImpl implements MarketService{
     }
 
     @Override
-    public String add(int id) {
+    public String add(int[] id) {
         return basket.add(id);
     }
 

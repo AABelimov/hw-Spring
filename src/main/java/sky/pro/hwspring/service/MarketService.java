@@ -5,7 +5,7 @@ import sky.pro.hwspring.component.Item;
 import java.util.Map;
 
 public interface MarketService {
-    String add(int id);
+    String add(int[] id);
 
     Map<Item, Integer> get();
 }
